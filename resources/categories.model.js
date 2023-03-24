@@ -1,4 +1,4 @@
-const {Sequelize, DataTypes} = require('sequelize')
+const {Sequelize} = require('sequelize')
 
 const sequelize = require('../util/database');
 
@@ -10,8 +10,9 @@ const Categories = sequelize.define('categories', {
     primaryKey: true, 
   }, 
   category_name:{
-    type:DataTypes.STRING(64), 
+    type:Sequelize.STRING, 
     allowNull: false,
+    unique: true,
   }, 
 })
 

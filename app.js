@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 const categoriesRouter = require("./resources/categories.router");
+const goodsRouter = require("./resources/goods.router");
 
 const sequelize = require('./util/database')
 
@@ -10,9 +11,7 @@ const Goods = require('./resources/goods.model');
 
 Categories.hasMany(Goods);
 
-sequelize.sync({
-  force: true
-}).then(result =>{
+sequelize.sync().then(result =>{
   console.log(result);
 }).catch((err)=>{
   console.log(err);
@@ -23,12 +22,17 @@ app.use(express.json());
 
 app.use('/', (req, res, next) => {
   if(req.originalUrl === '/'){
-    res.send("server is running");
+    res.sendFile(__dirname + '/public/index.html');
     return;
   }
   next();
 }) 
 
-app.use('/api/categories', categoriesRouter);
-app.listen(3000);
+app.use('/api/category', categoriesRouter);
+app.use('/api/goods', goodsRouter);
+app.listen(3000, function(err){
+  if(err) console.log(err);
+});
+
+
 module.exports = app;

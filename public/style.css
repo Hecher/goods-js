@@ -1,0 +1,19 @@
+.body{
+    background-color: powderblue;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.form-example {
+    width: 500px;
+    margin: auto;
+    background-color: burlywood;
+}
