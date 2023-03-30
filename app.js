@@ -20,13 +20,8 @@ sequelize.sync().then(result =>{
 app.use(express.json());
 
 
-app.use('/', (req, res, next) => {
-  if(req.originalUrl === '/'){
-    res.sendFile(__dirname + '/public/index.html');
-    return;
-  }
-  next();
-}) 
+app.use(express.static(__dirname + '/public'));
+
 
 app.use('/api/category', categoriesRouter);
 app.use('/api/goods', goodsRouter);

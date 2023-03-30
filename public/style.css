@@ -1,10 +1,8 @@
-.body{
+body{
     background-color: powderblue;
 }
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    width: 80%;
 
 }
 .input {
